@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            font-size: 20px;
+            background-image: url('/static/fon_edit.jpg');
+            background-size: cover;
+            color: #FFDAB9;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+</style>
+    <h2>Добавление стиля преподавателя</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.teacherStyle.label }}<br>
+            {{ form.teacherStyle(size=1) }}<br>
+            {% for error in form.teacherStyle.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

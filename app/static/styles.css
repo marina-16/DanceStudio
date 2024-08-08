@@ -1,0 +1,90 @@
+/* styles.css */
+h1 {
+    color: #FFFFFF;
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+    text-align: center; /*по центру*/
+}
+
+h2 {
+    color: #FF69B4;
+    font-style: italic;
+    font-size: 20px;
+}
+
+h3 {
+    margin-top: 5px; /*верхний отступ*/
+    margin-bottom: 5px; /*нижний отступ*/
+    color: #DDA0DD;
+    font-style: italic;
+}
+nav {
+    text-align: center; /*навигационная панель*/
+    font-size: 20px;
+    margin: 20px; /*отступы по краям навигационной панели*/
+}
+
+nav a {
+    margin: 0 5px; /*между ссылками*/
+}
+
+.content {
+    margin: 20px; /*отступы по краям*/
+}
+
+a {
+    color: #FFC0CB; /*цвет ссылок*/
+    font-size: 17px;
+    text-decoration: underline;
+    margin-bottom: 20px; /*отступ*/
+}
+
+a:hover {
+    color: #DB7093; /*при наведении курсора*/
+}
+.teacher-name,
+.style-name,
+.date,
+.time {
+    font-size: 20px;
+    color: #FFDAB9;
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+}
+.style-description,
+.teacher-description,
+.welcome,
+.admpanel
+ {
+    font-size: 17px;
+    color: #FFDAB9;
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+    margin-bottom: 5px; /*нижний отступ*/
+}
+
+
+form input[type="submit"],
+form button {
+    background-color: #6A5ACD; /*цвет фона кнопки */
+    color: #FFFFFF; /*внутри кнопки */
+    padding: 10px 15px; /*отступы в кнопке */
+    border: none;
+    border-radius: 5px; /*закругление углов*/
+    cursor: pointer; /*при наведении на кнопку*/
+    margin-top: 5px; /*верхний отступ*/
+    margin-bottom: 5px; /*нижний отступ*/
+}
+
+/*при наведении*/
+form input[type="submit"]:hover,
+form button:hover {
+    background-color: #800080;
+}
+li {
+    color: #FFDAB9;
+    font-family: 'Arial', sans-serif;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 5px; /*нижний отступ*/
+}

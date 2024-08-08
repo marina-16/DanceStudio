@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            font-size: 20px;
+            background-image: url('/static/fon.jpg');
+            background-size: cover;
+            color: #FFDAB9;
+
+        }
+
+        h1 {
+            font-size: 2.5em; /* Измененный размер заголовка h1 */
+            color: #FFFFFF;
+            font-family: 'Arial', sans-serif; /* Шрифт */
+            text-align: center; /* Выравнивание по центру */
+        }
+    </style>
+{% if current_user.is_authenticated %}
+    <p class="welcome">Добро пожаловать, {{current_user.username}}</p>
+
+{% if current_user.is_administrator() %}
+
+    <h2>Список пользователей:</h2>
+    <ul>
+        {% for user in users %}
+        <li>{{ user[1] }}</li>
+        <a href="{{url_for('addadmin',id=user[0])}}" >Сделать администратором</a><br>
+        {% endfor %}
+    </ul>
+{%endif%}
+{% else %}
+        <h1>Dance Studio</h1>{%endif%}
+{% endblock %}

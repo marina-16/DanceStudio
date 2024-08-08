@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Преподаватели{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            background-image: url('/static/fon_styles.jpg');
+            background-size: cover;
+        }
+
+    </style>
+{% if current_user.is_authenticated %}
+
+{% else %}
+{% endif %}
+    <h1>Преподаватели</h1>
+    <ul>
+        {% for teacher in teachers %}
+        <h2>ФИО: {{ teacher[1] }}</h2>
+        <p class="teacher-description">Информация о себе: {{teacher[2]}}</p><br>
+        <a href="{{url_for('infoteacher',id=teacher[0])}}" >Информация о стилях преподавателя</a> <br>
+        {% if current_user.is_authenticated %}
+        {% if current_user.is_administrator() %}
+        <a href="{{url_for('addstyleteacher',id=teacher[0])}}" >Добавить стиль преподавателю</a><br>
+        <a href="{{url_for('editteacher',id=teacher[0])}}" >Редактировать информацию о преподавателе</a><br>
+        {%else%}
+        {%endif%}
+        {%endif%}
+        <h3>-----------------------------------------------------</h3>
+        {% endfor %}
+    </ul>
+{% endblock %}

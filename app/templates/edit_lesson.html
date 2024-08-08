@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование информации о занятии{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            font-size: 20px;
+            background-image: url('/static/fon_edit.jpg');
+            background-size: cover;
+            color: #FFDAB9;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+</style>
+    <h2>Редактирование информации о занятии</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.teacherFIO.label }} (текущий преподаватель: {{nameT}}) <br>
+            {{ form.teacherFIO(size=1) }}<br>
+            {% for error in form.teacherFIO.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.styleName.label }} (текущий стиль: {{nameS}}) <br><br>
+            {{ form.styleName(size=1) }}<br>
+            {% for error in form.styleName.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.date.label }} (текущая дата: {{lesson.date}})<br>
+            {{ form.date(size=1) }}<br>
+            {% for error in form.date.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+
+            {{ form.time.label }} (текущее время: {{lesson.time}})<br>
+            {{ form.time(size=1) }}<br>
+            {% for error in form.time.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    <a href="{{ url_for('view_lessons') }}">Назад к списку занятий</a>
+
+{% endblock %}

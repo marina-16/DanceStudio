@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Стили{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            background-image: url('/static/fon_styles.jpg');
+            background-size: cover;
+        }
+
+    </style>
+
+    <h1>Стили</h1>
+    <ul>
+        {% for style in styles %}
+        <h2>Название: {{ style[1] }}</h2>
+        <p class="style-description">Описание: {{style[2]}}</p>
+        {% if current_user.is_authenticated %}
+        {% if current_user.is_administrator() %}
+        <a href="{{url_for('editstyle',id=style[0])}}" >Редактировать стиль</a><br>
+        {%else%}
+        {%endif%}
+        {% endif %}
+        <h3>-----------------------------------------------------</h3>
+        {% endfor %}
+    </ul>
+{% endblock %}

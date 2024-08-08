@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Добавление стиля{% endblock %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            font-size: 20px;
+            background-image: url('/static/fon_login.jpg');
+            background-size: cover;
+            color: #FFDAB9;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+
+</style>
+    <h2>Создание стиля</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.stylename.label }}<br>
+            {{ form.stylename(size=32) }}<br>
+            {% for error in form.stylename.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(cols=50, rows=20) }}<br>
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

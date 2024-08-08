@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            font-size: 20px;
+            background-image: url('/static/fon_login.jpg');
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+    </style>
+  <h2>Регистрация</h2>
+  <form method="POST" action="{{ url_for('registration') }}">
+    {{ form.hidden_tag() }}
+    <div>
+      {{ form.username.label }}<br>
+      {{ form.username(size=32) }}<br>
+      {% for error in form.username.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    </div>
+    <div>
+      {{ form.password.label }}<br>
+      {{ form.password(size=32) }}<br>
+      {% for error in form.password.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    </div>
+    <div>
+      {{ form.password2.label }}<br>
+      {{ form.password2(size=32) }}<br>
+      {% for error in form.password2.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    </div>
+    <div><br>
+      {{ form.submit() }}
+    </div>
+  </form>
+{% endblock %}

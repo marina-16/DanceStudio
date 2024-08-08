@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Занятия{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+       body {
+            background-image: url('/static/fon_styles.jpg');
+            background-size: cover;
+        }
+    </style>
+    <h1>Занятия</h1>
+    <ul>
+        {% for lesson in lessons %}
+        <li>
+            <span class="teacher-name">ФИО преподавателя: {{ lesson['teacher_name'] }}</span><br>
+            <span class="style-name">Стиль занятия: {{ lesson['style_name'] }}</span><br>
+            <span class="date">Дата: {{ lesson['date'] }}</span><br>
+            <span class="time">Время: {{ lesson['time'] }}</span><br>
+
+            {% if current_user.is_authenticated %}
+                <form method="post" action="{{ url_for('view_lessons') }}">
+                    {{ form.hidden_tag() }}
+                    <input type="hidden" name="lesson_id" value="{{ lesson['id'] }}">
+                    {{ form.submit() }}
+                </form>
+                {% if current_user.is_administrator() %}
+                    <a href="{{url_for('editlesson', id=lesson['id'])}}">Редактировать занятие</a>{% endif %}{% endif %}
+            <h3>-----------------------------------------------------</h3>
+        </li>
+
+    {% endfor %}
+    </ul>
+{% endblock %}

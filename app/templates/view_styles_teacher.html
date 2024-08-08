@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            background-image: url('/static/fon_styles.jpg');
+            background-size: cover;
+        }
+
+    </style>
+    <h1>Стили</h1>
+    <h2>Список стилей преподавателя:</h2>
+    <ul>
+        {% for style in styles %}
+            <li>{{ style[1] }}</li>
+        {% endfor %}
+    </ul>
+{% if current_user.is_authenticated %}
+{% if current_user.is_administrator() %}
+        <a href="{{url_for('addstyleteacher',id=id)}}" >Добавить стиль преподавателю</a><br>
+        {%else%}
+        {%endif%}
+{%endif%}
+{% endblock %}

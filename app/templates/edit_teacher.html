@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование информации о преподавателе{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+<style>
+        body {
+            font-size: 20px;
+            background-image: url('/static/fon_edit.jpg');
+            background-size: cover;
+            color: #FFDAB9;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5em;
+        }
+</style>
+    <h2>Редактирование информации о преподавателях</h2>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.teacherFIO.label }}<br>
+            {{ form.teacherFIO(size=32) }}<br>
+            {% for error in form.teacherFIO.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(cols=50, rows=20) }}<br>
+            {% for error in form.description.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    <a href="{{ url_for('view_teachers') }}">Назад к списку преподавателей</a>
+
+{% endblock %}
